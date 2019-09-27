@@ -58,7 +58,7 @@ regions_hidden:
 ```
 More informations [here](https://www.drupal.org/docs/8/theming-drupal-8/defining-a-theme-with-an-infoyml-file).
 ### mytheme.libraries.yml
-See next part 'Libraries'.
+See [next part](#libraries).
 
 ### mytheme.theme
 This is where preprocess functions are written. Usage example [here](https://www.drupal.org/docs/8/theming-drupal-8/modifying-attributes-in-a-theme-file).
@@ -82,12 +82,12 @@ my-library:
     - mytheme/other-library: {}
 ```
 Notes:
-* More informations about SMACSS in the next part 'Style'.
-* Dependencies are really useful for the javascript, see the 'Scripts' part.
+* More informations about SMACSS in the [next part](#smacss).
+* Dependencies are really useful for the javascript, see [this part](#dependencies).
 * Insert options such as 'minified: true' or 'type: external' inside {}, see [the documentation](https://www.drupal.org/docs/8/theming/adding-stylesheets-css-and-javascript-js-to-a-drupal-8-theme#libraries-options-details) for the full list.
 
 ### Global libraries
-Global libraries are imported on every page thanks to their declaration in the `mytheme.info.yml` file (see precedent part). The convention for their names is to add global- before their name, example:
+Global libraries are imported on every page thanks to their declaration in the `mytheme.info.yml` file (see [precedent part](#mythemeinfoyml)). The convention for their names is to add `global-` before their name, example:
 ```yml
 global-styling:
   version: VERSION
@@ -169,7 +169,7 @@ libraries-override:
 More informations [here](https://www.drupal.org/docs/8/theming/adding-stylesheets-css-and-javascript-js-to-a-drupal-8-theme).
 
 
-## Style
+## Styles
 Drupal uses SMACSS & BEM but this is not required for writing a theme.
 
 ### SMACSS
