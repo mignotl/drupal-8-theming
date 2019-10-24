@@ -1,5 +1,16 @@
 # Drupal 8 Theming
 This is a documentation on how to create a theme in Drupal 8.
+
+Summary:
+* [Create the theme](#create-the-theme)
+* [Libraries](#libraries)
+* [Styles](#styles)
+* [Scripts](#scripts)
+* [Templates](#templates)
+* [Automation tools](#automation-tools)
+* [Side notes](#side-notes)
+
+
 ## Create the theme
 A new theme should be placed in `web/themes/custom`with this architecture:
 ```
@@ -279,6 +290,7 @@ And in the Javascript:
 console.log(drupalSettings.number); // print 6
 ```
 
+
 ## Templates
 Templates provides HTML markup and some presentation logic.
 
@@ -308,6 +320,7 @@ mytheme/
   mytheme.theme
 ```
 Don't forget to change the libraries path.
+
 
 ## Side notes
 * When editing the theme config files (*.theme, *.info.yml, *.libraries.yml) or adding new templates, the cache should be rebuild to see the changes (by using drush cr for example).
