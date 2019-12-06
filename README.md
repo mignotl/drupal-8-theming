@@ -89,7 +89,7 @@ my-library:
       css/style.css: {}
   js:
     js/script.js
-  dependencies:  # Other libraries than are needed for my-library. Format: theme-name/library-name
+  dependencies:  # Other libraries that are needed for my-library. Format: theme-name/library-name
     - mytheme/other-library: {}
 ```
 Notes:
@@ -208,7 +208,7 @@ If all three are used in a name it would look something like this:
 ## Scripts
 
 ### Javascript template file
-The scripts in Drupal 8 use **behaviors**. All behaviors are called on on page load and on every request such as Ajax requests.
+The scripts in Drupal 8 use **behaviors**. All behaviors are called on page load and on every request such as Ajax requests.
 ```js
 /**
  * @file
@@ -223,9 +223,10 @@ The scripts in Drupal 8 use **behaviors**. All behaviors are called on on page l
     /**
      * Attaches [...] behavior to [...].
      *
-     * Namespace should be unique.
-     * context is the part of the page that change, on a page load, this will be the document.
-     * settings is where the informations from the PHP are thanks to DrupalSettings.
+     * The namespace should be unique.
+     * context is the part of the page that change,
+     * for example on a page load, context corresponds to the document.
+     * settings is where the informations from the PHP are (thanks to DrupalSettings).
      *
      * @type {Drupal~behavior}
      *
@@ -234,15 +235,15 @@ The scripts in Drupal 8 use **behaviors**. All behaviors are called on on page l
      * @prop {Drupal~behaviorDetach} detach
      *   Specific description of this detach function goes here.
      */
-    Drupal.behaviors.namespace = {
+    Drupal.behaviors.myNamespace = {
         // Variables
-        value: '.mon-texte',
+        value: '.my-text',
 
         // Executed on page load and every request, including Ajax requests.
         attach: function (context, settings) {
             // Add context so this will succeed only if this part has changed.
             // Once allow this code to run only once.
-            $('main', context).once('namespace').each(() => {
+            $('main', context).once('myNamespace').each(() => {
                 // ...
                 this.myFunction();
             });
@@ -278,7 +279,7 @@ my-library:
     - core/drupal         # We need core/drupal in order to take advantage of the Drupal.behaviors.
     - core/drupalSettings
 ```
-To get a complete overview of all the core libraries, take a look inside `core/core.libraries.yml`.
+To get a complete overview of all the core libraries, take a look inside `web/core/core.libraries.yml`.
 
 ### Pass variables from PHP
 DrupalSettings allows to pass variables from PHP to Javascript. For example I want to pass to my-library the number variable equals to 6:
@@ -302,7 +303,7 @@ If any file need to be overridden, try to override high level templates such as 
 
 
 ## Automation tools
-When developing a theme in Drupal 8, the best tool is **gulpjs**. No need to use library manager because Drupal already do it. You can find an example of [gulpfile](gulpfile.js) and [package.json](package.json) in this git or create one with the help of the [Drupal documentation](https://www.drupal.org/docs/8/theming/creating-automation-tools-for-custom-themes-gulpjs).
+When developing a theme in Drupal 8, the best tool is **gulpjs**. No need to use a library manager because Drupal already do it. You can find an example of [gulpfile](gulpfile.js) and [package.json](package.json) in this git or you can create one with the help of the [Drupal documentation](https://www.drupal.org/docs/8/theming/creating-automation-tools-for-custom-themes-gulpjs).
 
 When using preprocessing tools, the tree folder can change to this:
 ```
@@ -323,6 +324,6 @@ Don't forget to change the libraries path.
 
 
 ## Side notes
-* When editing the theme config files (*.theme, *.info.yml, *.libraries.yml) or adding new templates, the cache should be rebuild to see the changes (by using drush cr for example).
+* When editing the theme config files (*.theme, *.info.yml, *.libraries.yml) or adding new templates, the cache should be rebuild to see the changes (by using `drush cr` for example).
 * To activate the theme, go to the appearance page in the admin menu.
-* This is just a summary of everything you need to know to make a Drupal 8 theme. This was created with the [official documentation](https://www.drupal.org/docs/8) and with different online sources such as [sqndr theming guide](https://sqndr.github.io/d8-theming-guide/index.html).
+* This is just a summary of what you need to make a Drupal 8 theme. This was created with the [official documentation](https://www.drupal.org/docs/8) and with different online sources such as [sqndr theming guide](https://sqndr.github.io/d8-theming-guide/index.html).
